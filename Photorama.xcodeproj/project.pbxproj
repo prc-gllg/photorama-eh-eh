@@ -93,8 +93,6 @@
 		32262E152B10AB510091EC49 = {
 			isa = PBXGroup;
 			children = (
-				32262E5D2B10C6C90091EC49 /* PhotoInfoViewController.swift */,
-				32262E5B2B10C31E0091EC49 /* ImageStore.swift */,
 				32262E202B10AB510091EC49 /* Photorama */,
 				32262E372B10AB530091EC49 /* PhotoramaTests */,
 				32262E412B10AB530091EC49 /* PhotoramaUITests */,
@@ -115,6 +113,8 @@
 		32262E202B10AB510091EC49 /* Photorama */ = {
 			isa = PBXGroup;
 			children = (
+				32262E5B2B10C31E0091EC49 /* ImageStore.swift */,
+				32262E5D2B10C6C90091EC49 /* PhotoInfoViewController.swift */,
 				32262E212B10AB510091EC49 /* AppDelegate.swift */,
 				32262E232B10AB510091EC49 /* SceneDelegate.swift */,
 				32262E252B10AB510091EC49 /* PhotosViewController.swift */,
