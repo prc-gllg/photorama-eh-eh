@@ -19,7 +19,6 @@ class PhotoInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         store.fetchImage(for: photo) { (result) -> Void in
             switch result {
             case let .success(image):

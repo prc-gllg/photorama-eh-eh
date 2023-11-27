@@ -18,16 +18,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         // Do any additional setup after loading the view.
         collectionView.dataSource = photoDataSource
         collectionView.delegate = self
-        store.fetchInterestingPhotos { (photosResult) in
-            switch photosResult {
-            case let .success(photos):
-                print("Found \(photos.count) photos")
-                self.photoDataSource.photos = photos
-            case let .failure(error):
-                print("Error in fetching interesting photos: \(error)")
-                self.photoDataSource.photos.removeAll()
-            }
-            self.collectionView.reloadSections(IndexSet(integer: 0))
+        store.fetchInterestingPhotos { (photosResult) -> Void in
+            self.updateDataSource()
         }
     }
 
@@ -45,7 +37,19 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
             preconditionFailure("Unexpected segue identifier.")
         }
     }
-
+        
+    //method to update data source
+    private func updateDataSource() {
+        store.fetchAllPhotos { (photoResult) in
+            switch photoResult {
+            case let .success(photos):
+                self.photoDataSource.photos = photos
+            case let .failure(error):
+                self.photoDataSource.photos.removeAll()
+            }
+            self.collectionView.reloadSections(IndexSet(integer: 0))
+        }
+    }
 }
 
 extension PhotosViewController {

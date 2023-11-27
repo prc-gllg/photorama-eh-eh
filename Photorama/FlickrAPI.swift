@@ -26,7 +26,6 @@ struct FlickrAPI {
     }
     
     private static func flickrURL(endpoint: EndPoint, parameters: [String:String]?) -> URL {
-        
         var components = URLComponents(string: baseURLString)!
         var queryItems = [URLQueryItem]()
         let baseParams = [
@@ -51,8 +50,8 @@ struct FlickrAPI {
         components.queryItems = queryItems
         return components.url!
     }
-    
-    static func photos(fromJSON data: Data) -> Result<[Photo], Error> {
+    //decoding JSON data
+    static func photos(fromJSON data: Data) -> Result<[FlickrPhoto], Error> {
         do {
             let decoder = JSONDecoder()
             
