@@ -70,7 +70,7 @@ class PhotoStore {
                 fetchRequest.predicate = predicate
                 var fetchedPhotos: [Photo]?
                 context.performAndWait {
-                    fetchedPhotos = try?  fetchRequest.execute()
+                    fetchedPhotos = try? fetchRequest.execute()
                 }
                 if let existingPhoto = fetchedPhotos?.first {
                     return existingPhoto
@@ -83,6 +83,7 @@ class PhotoStore {
                     photo.photoID = flickrPhoto.photoID
                     photo.remoteURL = flickrPhoto.remoteURL
                     photo.dateTaken = flickrPhoto.dateTaken
+                    photo.viewCount = 0
                 }
                 return photo
             }
