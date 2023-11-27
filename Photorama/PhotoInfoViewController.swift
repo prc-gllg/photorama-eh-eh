@@ -12,7 +12,7 @@ class PhotoInfoViewController: UIViewController {
     
     var photo: Photo! {
         didSet {
-            navigationItem.title = photo.title
+            navigationItem.title = ("\(photo.title ?? "") \(photo.viewCount)")
         }
     }
     var store: PhotoStore!

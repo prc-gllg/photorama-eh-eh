@@ -18,6 +18,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         // Do any additional setup after loading the view.
         collectionView.dataSource = photoDataSource
         collectionView.delegate = self
+        collectionView.reloadData()
         store.fetchInterestingPhotos { (photosResult) -> Void in
             self.updateDataSource()
         }
