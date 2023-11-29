@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.swift
 //  Photorama
 //
-//  Created by Pierce Gallego on 11/27/23.
+//  Created by Pierce Gallego on 11/28/23.
 //
 //
 
@@ -21,6 +21,24 @@ extension Photo {
     @NSManaged public var remoteURL: URL?
     @NSManaged public var title: String?
     @NSManaged public var viewCount: Int16
+    @NSManaged public var tags: NSSet?
+
+}
+
+// MARK: Generated accessors for tags
+extension Photo {
+
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
+
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
+
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
+
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
 
 }
 

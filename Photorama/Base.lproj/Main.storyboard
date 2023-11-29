@@ -88,15 +88,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QUu-dx-4NA">
-                                <rect key="frame" x="15" y="118" width="363" height="685"/>
+                                <rect key="frame" x="15" y="118" width="363" height="651"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muV-of-aUA">
+                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                                <items>
+                                    <barButtonItem title="Tags" id="4r2-1V-RfS">
+                                        <connections>
+                                            <segue destination="cjY-q2-aDt" kind="presentation" identifier="showTags" id="pzl-gw-Qlt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ToF-ta-JgB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ToF-ta-JgB" firstAttribute="bottom" secondItem="QUu-dx-4NA" secondAttribute="bottom" constant="15" id="K7i-2t-pX9"/>
+                            <constraint firstAttribute="trailing" secondItem="muV-of-aUA" secondAttribute="trailing" id="4vC-ph-dGG"/>
+                            <constraint firstItem="muV-of-aUA" firstAttribute="top" secondItem="QUu-dx-4NA" secondAttribute="bottom" id="K7i-2t-pX9"/>
+                            <constraint firstItem="muV-of-aUA" firstAttribute="bottom" secondItem="ToF-ta-JgB" secondAttribute="bottom" id="Lm7-xr-oov"/>
                             <constraint firstItem="QUu-dx-4NA" firstAttribute="top" secondItem="ToF-ta-JgB" secondAttribute="top" constant="15" id="Me8-b9-7xE"/>
                             <constraint firstItem="QUu-dx-4NA" firstAttribute="leading" secondItem="ToF-ta-JgB" secondAttribute="leading" constant="15" id="PL1-tD-fv0"/>
+                            <constraint firstItem="muV-of-aUA" firstAttribute="leading" secondItem="ToF-ta-JgB" secondAttribute="leading" id="ZCp-3y-rX5"/>
                             <constraint firstItem="ToF-ta-JgB" firstAttribute="trailing" secondItem="QUu-dx-4NA" secondAttribute="trailing" constant="15" id="vJ2-j7-jxy"/>
                         </constraints>
                     </view>
@@ -108,6 +121,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tu-Id-6BL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1898" y="4"/>
+        </scene>
+        <!--Tags-->
+        <scene sceneID="0oq-OC-HDd">
+            <objects>
+                <tableViewController id="1Id-FF-x1i" customClass="TagsViewController" customModule="Photorama" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="WP1-Fn-Iin">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="M5N-58-jqf">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M5N-58-jqf" id="HJk-dk-5he">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1Id-FF-x1i" id="GdR-Eb-aDr"/>
+                            <outlet property="delegate" destination="1Id-FF-x1i" id="Rpa-98-utJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tags" id="mNx-Ks-VsF">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="K3J-S8-YrR">
+                            <connections>
+                                <action selector="done:" destination="1Id-FF-x1i" id="0Mx-HZ-Bfr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GxX-G5-iMe">
+                            <connections>
+                                <action selector="addNewTag:" destination="1Id-FF-x1i" id="zMe-9e-PYw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mo0-2B-X40" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3520" y="18"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZOC-3B-DVq">
+            <objects>
+                <navigationController id="cjY-q2-aDt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KgV-ix-pQE"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f59-2J-snt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1Id-FF-x1i" kind="relationship" relationship="rootViewController" id="vsL-y6-Zna"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gz-hc-yKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="18"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fUK-Pn-fqz">
@@ -133,7 +203,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

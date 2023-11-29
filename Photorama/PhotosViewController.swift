@@ -28,8 +28,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         switch segue.identifier {
         case "showPhoto":
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
-                
-                let photo = self.updatePhotoViewCount(photo: photoDataSource.photos[selectedIndexPath.row])
+                let photo = photoDataSource.photos[selectedIndexPath.row]
                 let destinationVC = segue.destination as! PhotoInfoViewController
                 destinationVC.photo = photo
                 destinationVC.store = store
@@ -45,22 +44,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
             switch photoResult {
             case let .success(photos):
                 self.photoDataSource.photos = photos
-            case let .failure(error):
+            case .failure(_):
                 self.photoDataSource.photos.removeAll()
             }
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
-    }
-    
-    private func updatePhotoViewCount(photo: Photo) -> Photo {
-        let updatedPhoto = photo
-        updatedPhoto.viewCount += 1
-        do {
-            try store.persistentContainer.viewContext.save()
-        } catch {
-            print("Core Data save failed: \(error).")
-        }
-        return updatedPhoto
     }
 }
 
