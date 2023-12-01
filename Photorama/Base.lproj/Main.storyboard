@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C0k-Lk-Z5c">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="vfB-IO-Od2">
                                     <size key="itemSize" width="90" height="90"/>
@@ -60,19 +60,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlP-3u-JB3">
+                                <rect key="frame" x="0.0" y="769" width="393" height="83"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="All Photos" image="photo.on.rectangle" catalog="system" id="TrH-OT-YIf"/>
+                                    <tabBarItem tag="1" title="Favorites" image="star" catalog="system" id="4Ga-uX-Xdb"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="C0k-Lk-Z5c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5aj-gY-wLi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C0k-Lk-Z5c" secondAttribute="bottom" id="618-X7-GCt"/>
+                            <constraint firstItem="TlP-3u-JB3" firstAttribute="top" secondItem="C0k-Lk-Z5c" secondAttribute="bottom" id="618-X7-GCt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C0k-Lk-Z5c" secondAttribute="trailing" id="Njb-pW-kwf"/>
+                            <constraint firstAttribute="bottom" secondItem="TlP-3u-JB3" secondAttribute="bottom" id="OmO-zz-oWP"/>
+                            <constraint firstItem="TlP-3u-JB3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ScC-IE-0dP"/>
                             <constraint firstItem="C0k-Lk-Z5c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aiM-Ka-sY1"/>
+                            <constraint firstItem="TlP-3u-JB3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yWu-4b-pn0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="lhN-md-yKT"/>
                     <connections>
                         <outlet property="collectionView" destination="C0k-Lk-Z5c" id="fyz-YR-wwq"/>
+                        <outlet property="tabbar" destination="TlP-3u-JB3" id="BKR-Dw-Yuu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,9 +125,16 @@
                             <constraint firstItem="ToF-ta-JgB" firstAttribute="trailing" secondItem="QUu-dx-4NA" secondAttribute="trailing" constant="15" id="vJ2-j7-jxy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Lew-hO-K5Y"/>
+                    <navigationItem key="navigationItem" id="Lew-hO-K5Y">
+                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="NvW-5z-ecq">
+                            <connections>
+                                <action selector="setFavorite:" destination="DbX-m9-dmw" id="cfr-1t-2s4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="QUu-dx-4NA" id="efw-mz-xbG"/>
+                        <outlet property="isFavorite" destination="NvW-5z-ecq" id="qNg-OU-MdP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Tu-Id-6BL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -199,6 +218,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="photo.on.rectangle" catalog="system" width="128" height="98"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

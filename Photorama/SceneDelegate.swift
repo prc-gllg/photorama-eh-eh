@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = window!.rootViewController as! UINavigationController
         let photosViewController = rootViewController.topViewController as! PhotosViewController
         photosViewController.store = PhotoStore()
+        photosViewController.selectedTab = 0
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

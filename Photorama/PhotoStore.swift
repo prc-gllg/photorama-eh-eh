@@ -78,6 +78,7 @@ class PhotoStore {
                         photo.remoteURL = flickrPhoto.remoteURL
                         photo.dateTaken = flickrPhoto.dateTaken
                         photo.viewCount = 0
+                        photo.isFavorite = false
                     }
                     return photo
                 }
@@ -159,6 +160,23 @@ class PhotoStore {
             }
         }
     }
+    
+    func fetchFavorites(completion: @escaping (Result<[Photo], Error> ) -> Void) {
+        let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
+        let predicate = NSPredicate(format: "\(#keyPath (Photo.isFavorite)) == true")
+        fetchRequest.predicate = predicate
+        
+        let viewContext = persistentContainer.viewContext
+        viewContext.perform {
+            do {
+                let fetchedFavorites = try fetchRequest.execute()
+                completion(.success(fetchedFavorites))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
     
     //fetch all tags
     func fetchAllTags(completion: @escaping(Result<[Tag], Error>) -> Void) {

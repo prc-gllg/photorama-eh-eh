@@ -9,6 +9,7 @@ import UIKit
 
 class PhotoInfoViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var isFavorite: UIBarButtonItem!
     
     var photo: Photo! {
         didSet {
@@ -29,6 +30,7 @@ class PhotoInfoViewController: UIViewController {
             }
         }
         photo.viewCount += 1
+        isFavorite.image = photo.isFavorite == false ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
         store.saveContextIfNeeded()
     }
     
@@ -43,5 +45,14 @@ class PhotoInfoViewController: UIViewController {
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
+    }
+}
+
+
+extension PhotoInfoViewController {
+    @IBAction func setFavorite(_ sender: UIBarButtonItem) {
+        photo.isFavorite.toggle()
+        store.saveContextIfNeeded()
+        isFavorite.image = photo.isFavorite == false ? UIImage(systemName: "star") : UIImage(systemName: "star.fill")
     }
 }

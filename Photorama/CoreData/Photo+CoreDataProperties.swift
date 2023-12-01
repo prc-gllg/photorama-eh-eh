@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.swift
 //  Photorama
 //
-//  Created by Pierce Gallego on 11/28/23.
+//  Created by Pierce Gallego on 12/1/23.
 //
 //
 
@@ -21,6 +21,7 @@ extension Photo {
     @NSManaged public var remoteURL: URL?
     @NSManaged public var title: String?
     @NSManaged public var viewCount: Int16
+    @NSManaged public var isFavorite: Bool
     @NSManaged public var tags: NSSet?
 
 }
